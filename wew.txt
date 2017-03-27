@@ -1,0 +1,41 @@
+drop table if exists Duel;
+drop table if exists Participants;
+drop table if exists Race;
+drop table if exists Pilot;
+drop table if exists Aircraft;
+drop table if exists Team;
+
+create table Team(
+    name varchar(32) primary key,
+    country varchar(32) not null
+);
+
+create table Aircraft(
+    model varchar(32) primarykey,
+    horsepower integer not null,
+    topspeed integer not null,
+    width integer not null,
+    height integer,
+    weight integer
+);
+
+create table Pilot(
+    num integer,
+    firstname varchar(32) not null,
+    surname varchar(32) not null,
+    nationality varchar(32) not null,
+    birthdate date,
+    name varchar(64),
+    model varchar(32) references Aircraft(model),
+    constraint pk_Team foreignkey(name) references Team(name)
+);
+
+create table Race(
+    location varchar(32),
+    edition integer,
+    country varchar(32) not null,
+    race_date date,
+    gates integer,
+    eliminations integer default 1,
+    constraint pk_Race primary key(location,edition)
+);
