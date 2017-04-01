@@ -40,8 +40,7 @@ create table Episode(
     idEpisode INTEGER PRIMARY KEY,
     epNumber INTEGER NOT NULL,
     releaseDate DATE NOT NULL,
-    idSeason INTEGER NOT NULL REFERENCES Season(idSeason),
-    idShow TEXT NOT NULL REFERENCES Show(idShow)
+    idSeason INTEGER NOT NULL REFERENCES Season(idSeason)
 );
 
 create table Actor(
