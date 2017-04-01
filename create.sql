@@ -3,21 +3,21 @@
 .nullvalue NULL
 PRAGMA foreign_keys = ON;
 
-drop table if exists Show;
-drop table if exists Season;
-drop table if exists Episode;
-drop table if exists Actor;
-drop table if exists Character;
-drop table if exists Message;
-drop table if exists Comment;
-drop table if exists Watched;
-drop table if exists User;
-drop table if exists FreeUser;
 drop table if exists PremiumUser;
+drop table if exists FreeUser;
+drop table if exists User;
+drop table if exists Watched;
+drop table if exists Comment;
+drop table if exists Message;
+drop table if exists Character;
+drop table if exists Actor;
+drop table if exists Episode;
+drop table if exists Season;
+drop table if exists Show;
 drop table if exists Country;
 
 create table Country(
-    idCountry INTEGER NOT NULL PRIMARY KEY,
+    idCountry INTEGER PRIMARY KEY,
     name TEXT NOT NULL
 );
 
@@ -85,7 +85,7 @@ create table User(
     username TEXT UNIQUE NOT NULL,
     birthday DATE NOT NULL,
     gender varchar(6) CHECK (gender="Male" or gender="Female"),
-    idCountry INTEGER NOT NULL REFERENCES Country(idCountry),
+    idCountry INTEGER NOT NULL REFERENCES Country(idCountry) ON DELETE CASCADE,
     userType INTEGER CHECK (userType=0 or userType=1)
 );
 
@@ -95,7 +95,7 @@ create table FreeUser(
 
 create table PremiumUser(
     idUser INTEGER REFERENCES User(idUser) PRIMARY KEY,
-    subscriptionFee INTEGER CHECK (subscriptionFee=1),
-    noAds INTEGER CHECK (noAds=1),
-    rewatchEpisodes INTEGER CHECK (rewatchEpisodes=1)
+    subscriptionFee INTEGER DEFAULT 1,
+    noAds INTEGER DEFAULT 1,
+    rewatchEpisodes INTEGER DEFAULT 1
 );
