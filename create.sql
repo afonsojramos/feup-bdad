@@ -16,6 +16,11 @@ drop table if exists FreeUser;
 drop table if exists PremiumUser;
 drop table if exists Country;
 
+create table Country(
+    idCountry INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
 create table Show(
     idShow INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -26,13 +31,13 @@ create table Show(
 );
 
 create table Season(
-    idSeason INTEGER NOT NULL PRIMARY KEY,
+    idSeason INTEGER PRIMARY KEY,
     nSeason INTEGER NOT NULL,
     idShow INTEGER NOT NULL REFERENCES Show(idShow)
 );
 
 create table Episode(
-    idEpisode INTEGER NOT NULL PRIMARY KEY,
+    idEpisode INTEGER PRIMARY KEY,
     epNumber INTEGER NOT NULL,
     releaseDate DATE NOT NULL,
     idSeason INTEGER NOT NULL REFERENCES Season(idSeason),
@@ -45,14 +50,14 @@ create table Actor(
 );
 
 create table Character(
-    idCharacter INTEGER NOT NULL PRIMARY KEY,
+    idCharacter INTEGER PRIMARY KEY,
     characterName TEXT NOT NULL,
     idActor INTEGER NOT NULL REFERENCES Actor(idActor),
     idShow INTEGER NOT NULL REFERENCES Show(idShow)
 );
 
 create table Message(
-   idMessage INTEGER NOT NULL PRIMARY KEY,
+   idMessage INTEGER PRIMARY KEY,
    content TEXT NOT NULL,
    msgDate DATE NOT NULL,
    idUser1 INTEGER NOT NULL REFERENCES User(idUser), 
@@ -60,7 +65,7 @@ create table Message(
 );
 
 create table Comment(
-   idComment INTEGER NOT NULL PRIMARY KEY,
+   idComment INTEGER PRIMARY KEY,
    content TEXT NOT NULL, 
    cmtDate DATE NOT NULL,
    idUser INTEGER NOT NULL REFERENCES User(idUser), 
@@ -80,20 +85,17 @@ create table User(
     username TEXT UNIQUE NOT NULL,
     birthday DATE NOT NULL,
     gender varchar(6) CHECK (gender="Male" or gender="Female"),
+    idCountry INTEGER NOT NULL REFERENCES Country(idCountry),
     userType INTEGER CHECK (userType=0 or userType=1)
 );
 
 create table FreeUser(
-    idUser INTEGER NOT NULL REFERENCES User(idUser) PRIMARY KEY
+    idUser INTEGER REFERENCES User(idUser) PRIMARY KEY
 );
 
 create table PremiumUser(
-    idUser INTEGER NOT NULL REFERENCES User(idUser) PRIMARY KEY,
+    idUser INTEGER REFERENCES User(idUser) PRIMARY KEY,
     subscriptionFee INTEGER CHECK (subscriptionFee=1),
     noAds INTEGER CHECK (noAds=1),
     rewatchEpisodes INTEGER CHECK (rewatchEpisodes=1)
-);
-
-create table Country(
-    name TEXT PRIMARY KEY 
 );
