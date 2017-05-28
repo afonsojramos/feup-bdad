@@ -1,3 +1,6 @@
+﻿.mode columns
+.headers on
+.nullvalue NULL
 --Idade média dos utilizadores que seguem Game Of Thrones
 SELECT AVG(strftime('%Y-%m-%d', 'now') - strftime('%Y-%m-%d', User.birthday)) AS Age
 FROM User

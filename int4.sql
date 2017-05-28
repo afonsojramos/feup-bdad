@@ -1,3 +1,6 @@
+﻿.mode columns
+.headers on
+.nullvalue NULL
 -- Comentários deixados no mesmo dia em que o episódio foi lançado
 SELECT *
 FROM Comment

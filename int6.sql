@@ -1,3 +1,6 @@
+﻿.mode columns
+.headers on
+.nullvalue NULL
 -- Utilizadores com mais mensagens enviadas no verão de 2012
 SELECT User.username AS user, Count(Message.idUser1) AS NumberOfMessages
 FROM User

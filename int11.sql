@@ -1,3 +1,6 @@
+﻿.mode columns
+.headers on
+.nullvalue NULL
 -- Séries vistas pelo User com id 6
 SELECT DISTINCT Show.name AS Name, Show.rating AS Rating
 FROM Show, User

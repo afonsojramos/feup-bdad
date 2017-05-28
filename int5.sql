@@ -1,3 +1,6 @@
+﻿.mode columns
+.headers on
+.nullvalue NULL
 -- Países ordenados por numero de utilizadores
 SELECT Country.name AS Name, COUNT(User.idCountry) AS NumberOfUsers
 FROM Country
