@@ -167,7 +167,7 @@ insert into Episode (idEpisode, epNumber, releaseDate, idSeason) values (17, 21,
 insert into Episode (idEpisode, epNumber, releaseDate, idSeason) values (18, 34, '2009-12-06', 13);
 insert into Episode (idEpisode, epNumber, releaseDate, idSeason) values (19, 15, '2016-04-29', 7);
 insert into Episode (idEpisode, epNumber, releaseDate, idSeason) values (20, 20, '2014-01-25', 16);
-insert into Message (idMessage, content, msgDate, idUser1, idUser2) values (1, 'hey man', '2014-04-01', 7, 15);
+insert into Message (idMessage, content, msgDate, idUser1, idUser2) values (1, 'fuck you man', '2014-04-01', 7, 15);
 insert into Message (idMessage, content, msgDate, idUser1, idUser2) values (2, 'oh boy oh boy', '2015-05-05', 3, 15);
 insert into Message (idMessage, content, msgDate, idUser1, idUser2) values (3, 'what up?', '2021-01-28', 8, 15);
 insert into Message (idMessage, content, msgDate, idUser1, idUser2) values (4, 'hey vsauce', '2000-11-27', 17, 8);
